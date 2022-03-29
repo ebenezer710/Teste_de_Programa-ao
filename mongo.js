@@ -15,19 +15,23 @@ async function main() {
             .then(response => {
                 copyItems = response.data ;
 
-                console.log(typeof copyItems)
-                teste.push(Object.fromEntries(copyItems))
-                //console.log(copyItems)
+                //console.log(typeof copyItems)
+                teste.push(copyItems)
+                //console.log(teste)
                 //return(teste)
                 
-                client.connect((err, db) => {
-                    //teste = teste;
-                    //onsole.log(typeof teste)
-                    //console.log( teste)
-                    const result = client.db("universities").collection("countries").insertMany(teste)
-                    //console.log(result.insertedCount)
-                });
             }).catch();
     })
+
+    await client.connect((err, db) => {
+        //teste = Object.assign({}, teste);
+         ;
+
+        console.log(teste)
+        //console.log( teste)
+        const result = client.db("universities").collection("countries").insertMany(teste)
+        console.log(typeof result)
+    });
 }
 main().catch();
+
