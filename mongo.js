@@ -19,19 +19,19 @@ async function main() {
                 teste.push(copyItems)
                 //console.log(teste)
                 //return(teste)
-                
+                client.connect((err, db) => {
+                    //teste = Object.assign({}, teste);
+                    
+            
+                    //console.log(teste)
+                    //console.log( teste)
+                    const result = client.db("universities").collection("countries").insertMany(teste)
+                    
+                    console.log(typeof result)
+                });
             }).catch();
     })
 
-     client.connect((err, db) => {
-        //teste = Object.assign({}, teste);
-        
-
-        //console.log(teste)
-        //console.log( teste)
-        const result = client.db("universities").collection("countries").insertMany(teste)
-        
-        console.log(typeof result)
-    });
+     
 }
 main().catch(console.error);
