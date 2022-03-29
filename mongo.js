@@ -13,7 +13,7 @@ async function main() {
 
         axios(myURL.toString())
             .then(response => {
-                copyItems = response.data ;
+                copyItems = Object.assign({}, response.data) ;
 
                 //console.log(typeof copyItems)
                 teste.push(copyItems)
@@ -23,15 +23,15 @@ async function main() {
             }).catch();
     })
 
-    await client.connect((err, db) => {
+     client.connect((err, db) => {
         //teste = Object.assign({}, teste);
-         ;
+        
 
-        console.log(teste)
+        //console.log(teste)
         //console.log( teste)
         const result = client.db("universities").collection("countries").insertMany(teste)
+        
         console.log(typeof result)
     });
 }
-main().catch();
-
+main().catch(console.error);
