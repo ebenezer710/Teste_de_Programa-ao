@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 MongoClient.connect(uri, (err, client) => {
   if (err) return console.log(err)
-  db = client.db('universities') // coloque o nome do seu DB
+  db = client.db('universities')
 
   app.listen(3000, () => {
     console.log('Server running on port 3000')
@@ -20,7 +20,7 @@ MongoClient.connect(uri, (err, client) => {
 //Tipo de template engine
 app.set('view engine', 'ejs')
 
-app.route('/') //setado a rota, e abaixo as ações a serem tomadas dentro desta rota
+app.route('/')
 .get(function(req, res) {
     console.log('1')
   const cursor = db.collection('countries').find()
